@@ -1,22 +1,3 @@
-//{
-//  "compilerOptions": {
-//    "target": "es2020",
-//    "module": "ESNext",
-//    "moduleResolution": "Node",
-//    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-//    "strict": true,
-//    "declaration": true,
-//    "declarationMap": true,
-//    "sourceMap": true,
-//    "verbatimModuleSyntax": true,
-//    "allowImportingTsExtension": true,
-//    "jsx": "react",
-//    "types": ["vitest/globals"],
-//    "allowSyntheticDefaultImports": true,
-//  },
-//  "include": ["src", "test", "vite-env.d.ts"]
-//}
-
 {
   "compilerOptions": {
     "target": "ESNext",

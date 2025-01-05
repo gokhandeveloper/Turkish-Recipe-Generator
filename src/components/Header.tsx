@@ -4,7 +4,7 @@ import logo from "../../logo.jpg"
 export default function Header() {
     
     return <div className="header">
+        <span className="brand">AI</span>
         <img alt="logo" src={logo}/>
-        <span className="brand">Claude</span>
     </div>
 }

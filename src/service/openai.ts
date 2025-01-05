@@ -2,6 +2,7 @@ import OpenAI from "openai";
 
 export default async function sendRequest(ingredientList:Array<string>) {
    const key = import.meta.env.VITE_OPEN_AI;
+   const model = import.meta.env.VITE_OPEN_AI_MODEL;
     const openai = new OpenAI({
         apiKey: key,
         dangerouslyAllowBrowser: true
@@ -12,7 +13,7 @@ export default async function sendRequest(ingredientList:Array<string>) {
         "Cut to the dinner/lunch instead of saying here is the ingredient list"
     
     const stream = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: model,
         messages: [{ role: "user", 
             content: "Suggest me a dinner or lunch based on these ingredients: "  +
                 ingredientList.toString() + ". "+ systemPrompt}],
