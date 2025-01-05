@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "es2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "strict": true,
-    "skipLibCheck": true,
-    "outDir": "dist"
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtension": true,
+    "jsx": "react",
+    "types": ["vitest/globals"],
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src"]
+  "include": ["src", "test"],
+  "exclude": ["node_modules"]
 }
