@@ -9,7 +9,7 @@
     "test": "vitest"
   },
   "dependencies": {
-
+    "openai": "^4.77.3",
     "react": "19.0.0",
     "react-dom": "^19.0.0",
     "vite": "^6.0.6"
