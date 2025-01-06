@@ -11,11 +11,12 @@ There are a few key differences between the tutorial and this project:
  - And of course, it only suggests Turkish dish (a little bit prompt engineering  needed there :) )
 
 ### Warning
-If you are planning to deploy this project, the open AI API key will be visible by inspecting the front end and anyone running this app will be able to see the key
-So you will need to build a backend which this front end makes a call and then your backend talks to the open API.
+If you are planning to deploy this project, the open AI API key will be visible by inspecting the front end and anyone running this app will be able to see the key.
+
+You will need to build a backend which this front end makes a call and then your backend talks to the open API.
 Or something like firebase with serverless architecture.
 
-### How to Run in dev
+### How to Run In Development
 
 From the root of the project 
 

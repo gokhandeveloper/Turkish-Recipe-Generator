@@ -1,10 +1,11 @@
 import React from "react";
 import GeneratedRecipe from "./GeneratedRecipe";
 import IngredientList from "./IngredientList";
+import sendRequest from "../service/OpenAi"
 export default function Main(props:any) {
     let ingredients: Array<string> = props.ingredients;
-    const [ingredientsState, ingredientsStateFunc] = React.useState(ingredients);
-    const [recipeShown, recipeFunction] = React.useState(false);
+    const [ingredientsState, setIngredients] = React.useState(ingredients);
+    const [aiRecipe, setAiRecipe] = React.useState("");
 
     return <>
         <form data-testid="ingredient-form" action={add} className="add-ingredient-form">
@@ -15,19 +16,28 @@ export default function Main(props:any) {
     </>
     
     function add(formData: any) {
-        ingredientsStateFunc(oldValue => [...oldValue, formData.get("ingredient")]);
+        setIngredients(oldValue => [...oldValue, formData.get("ingredient")]);
     }
 
     function getIngredientList() {
         return <>
-            <IngredientList ingredients={ingredientsState} requestRecipe={requestRecipe} ></IngredientList>
-            <GeneratedRecipe recipeShown={recipeShown} ingredients={ingredientsState}></GeneratedRecipe>
+            <IngredientList ingredients={ingredientsState} 
+                            requestRecipe={requestRecipe}
+                            deleteIngredients={deleteIngredients}
+            ></IngredientList>
+            <GeneratedRecipe result={aiRecipe}></GeneratedRecipe>
         </>
-        
     }
-
-     function requestRecipe() {
-            return recipeFunction(oldValue => !oldValue);
+    
+    function deleteIngredients(ingredient:string) {
+            setIngredients(oldValue=> 
+                      oldValue.toSpliced(oldValue.findIndex(item=>item===ingredient),1)
+                )
+    }
+    
+     async function requestRecipe() {
+            const result = await sendRequest(ingredientsState);
+            setAiRecipe(result);
     }
     
 }

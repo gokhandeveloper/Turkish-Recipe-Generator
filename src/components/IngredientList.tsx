@@ -1,10 +1,12 @@
 import React from "react";
 export default function IngredientList(props: 
-{ ingredients: any[]; requestRecipe: () => void; }) {
+{ ingredients: any[]; requestRecipe: () => void;
+    deleteIngredients(ingredient: string): void;
+}) {
     
         return props.ingredients.length==0 ?  "" :
             <div data-testid="ingredient-list">
-                <h2>Ingredients to send</h2>
+                <h2>Ingredients to include</h2>
                 <ul>
                     {mapIngredients()}
                 </ul>
@@ -19,7 +21,9 @@ export default function IngredientList(props:
     function mapIngredients() {
         let i = 0;
         return props.ingredients.map(ingredient =>
-            <li key={i++} data-testid={ingredient}>{ingredient}</li>)
+            <li key={i++} data-testid={ingredient}>{ingredient}<span>
+                <button onClick={() =>props.deleteIngredients(ingredient)}>-
+                </button></span></li>)
     }
 
     function showRequestButton() {

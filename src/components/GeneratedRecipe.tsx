@@ -1,25 +1,12 @@
 import React, {useEffect, useState} from "react";
-import sendRequest from "../service/OpenAi";
 import showDown from "showdown";
 
-export default function GeneratedRecipe(props: { ingredients: string[]; recipeShown: any; }) {
-    const [result, setResult] = useState("");
-
-    // Fetch the result when the component mounts or when props.ingredients change
-    useEffect(() => {
-        if(props.ingredients.length>3) {
-            sendRequest(props.ingredients).then(res => {
-                setResult(res);
-            });
-        }
-
-    }, [props.ingredients]);
-
+export default function GeneratedRecipe(props: { result: string}) {
     return (
-        props.recipeShown && result && (
+        props.result && (
             <section data-testid="generated-recipe">
                 <h2>Generated Recipe</h2>
-             <div dangerouslySetInnerHTML={{ __html: convertMarkDownToHTML(result) }}
+             <div dangerouslySetInnerHTML={{ __html: convertMarkDownToHTML(props.result) }}
                 />
             </section>
         )

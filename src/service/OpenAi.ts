@@ -11,8 +11,7 @@ export default async function sendRequest(ingredientList:Array<string>) {
     let systemPrompt= "You are a turkish chef. Please format the result in markdown so that I can render it in web pages easily." +
         "Don't include things like 'Certainly, I will help.'" +
         "Cut to the dinner/lunch instead of saying here is the ingredient list." +
-        "Only suggest degrees in Celcius not Fahrenheit." +
-    "Write the enjoy message at the end in Turkish."
+        "Only suggest degrees in Celcius not Fahrenheit." 
     if(ingredientList.length>0) {
         const stream = await openai.chat.completions.create({
             model: model,
