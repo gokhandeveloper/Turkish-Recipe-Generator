@@ -3,7 +3,7 @@ import sendRequest from "../service/OpenAi";
 import showDown from "showdown";
 
 export default function GeneratedRecipe(props: { ingredients: string[]; recipeShown: any; }) {
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState("");
 
     // Fetch the result when the component mounts or when props.ingredients change
     useEffect(() => {
@@ -15,7 +15,6 @@ export default function GeneratedRecipe(props: { ingredients: string[]; recipeSh
 
     }, [props.ingredients]);
 
-    // Render the section when result is available
     return (
         props.recipeShown && result && (
             <section data-testid="generated-recipe">
