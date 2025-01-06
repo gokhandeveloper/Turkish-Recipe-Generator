@@ -9,6 +9,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@types/showdown": "^2.0.6",
     "openai": "^4.77.3",
     "react": "19.0.0",
     "react-dom": "^19.0.0",

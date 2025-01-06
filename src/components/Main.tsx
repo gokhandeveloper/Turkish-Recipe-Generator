@@ -1,7 +1,6 @@
 import React from "react";
 import GeneratedRecipe from "./GeneratedRecipe";
 import IngredientList from "./IngredientList";
-import sendRequest from "../service/openai";
 export default function Main(props:any) {
     let ingredients: Array<string> = props.ingredients;
     const [ingredientsState, ingredientsStateFunc] = React.useState(ingredients);
@@ -22,15 +21,12 @@ export default function Main(props:any) {
     function getIngredientList() {
         return <>
             <IngredientList ingredients={ingredientsState} requestRecipe={requestRecipe} ></IngredientList>
-            <GeneratedRecipe recipeShown={recipeShown}></GeneratedRecipe>
+            <GeneratedRecipe recipeShown={recipeShown} ingredients={ingredientsState}></GeneratedRecipe>
         </>
         
     }
 
      function requestRecipe() {
-            sendRequest(ingredientsState).then(result => {
-                console.log(result);
-            })
             return recipeFunction(oldValue => !oldValue);
     }
     
